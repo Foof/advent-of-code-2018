@@ -6,7 +6,7 @@ const findFrequency = (inputRows) => {
     let currentFrequency = 0
     const visitedFrequencies = []
     while (true) {
-        for (let row of inputRows) {
+        for (const row of inputRows) {
             currentFrequency += parseInt(row)
             if (visitedFrequencies.includes(currentFrequency)) {
                 return currentFrequency

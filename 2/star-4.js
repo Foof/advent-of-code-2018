@@ -2,7 +2,7 @@ const fs = require('fs')
 
 const inputRows = fs.readFileSync('./input.txt', 'utf8').split("\n")
 
-function compareWords(id1, id2) {
+function charDifferences(id1, id2) {
     const chars1 = id1.split('')
     const chars2 = id2.split('')
     let differences = 0
@@ -22,16 +22,15 @@ function removeDifferences(id1, id2) {
     return result
 }
 
-function findSimilarBoxes(boxIds) {
+function solvePuzzle(boxIds) {
     for (const id1 of boxIds) {
         for (const id2 of boxIds) {
-            const differences = compareWords(id1, id2)
-            if (differences === 1) {
+            if (charDifferences(id1, id2) === 1) {
                 return removeDifferences(id1, id2)
             }
         }
     }
 }
 
-const result = findSimilarBoxes(inputRows)
+const result = solvePuzzle(inputRows)
 console.log(result)
